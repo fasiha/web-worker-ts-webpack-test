@@ -5,11 +5,17 @@ module.exports = {
   entry: './src/index.ts',
   module: {
     rules: [
+      // Use esbuild to compile JavaScript & TypeScript
       {
-        test: /.tsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
+          // Match `.js`, `.jsx`, `.ts` or `.tsx` files
+          test: /\.[jt]sx?$/,
+          loader: 'esbuild-loader',
+          options: {
+              // JavaScript version to compile to
+              target: 'es2015'
+          }
+      },
+      
     ]
   },
   output: {
