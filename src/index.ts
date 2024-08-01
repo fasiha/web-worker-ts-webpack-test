@@ -8,6 +8,7 @@ heading.innerHTML = 'Hello world!';
 document.body.appendChild(heading);
 
 const test = async () => {
+  console.log("import.meta.url=", import.meta.url);
   const worker = new Worker(new URL('./workers/foo.worker.ts', import.meta.url));
   const service = wrap<WorkerApi>(worker);
   const result = await service.someSillyFunction();
